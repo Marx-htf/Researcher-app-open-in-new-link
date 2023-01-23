@@ -21,7 +21,8 @@ function addPaperLink(node) {
             if (mutation.type === 'childList') {
                 for (const node of mutation.addedNodes) {
                     try {
-                        if (node.getAttribute('x-track-id') === 'paper') {
+                        var tags = getValue(window.location.href);
+                        if (node.getAttribute('x-track-id') === 'paper' && document.location.href.endsWith('feed/'+tags)) {
                             addPaperLink(node);
                         }
                     } catch (err) {
