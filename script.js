@@ -9,6 +9,14 @@
 // @grant        none
 // ==/UserScript==
 
+//JS 获取最后一个 指定字符  后面的值
+function getValue(url){
+    //获取最后一个/的位置
+    var site = url.lastIndexOf("\/");
+    //截取最后一个/后的值
+    return url.substring(site + 1, url.length);
+}
+
 function addPaperLink(node) {
     const paperId = node.getAttribute('x-track-detail').split(':')[1].split('}')[0];
     node.firstChild.innerHTML += `<a href="${'/paper/' + paperId.replace(',','')}" target="_blank" class="${node.firstChild.firstChild.getAttribute('class')}">open article in new tab</a>`
